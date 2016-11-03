@@ -54,6 +54,8 @@ And so this project was born!
 * Make the plot more attractive
 * Parse out the polyline from the route, right now I just manually copy/pasted it
 * My Google Maps API key is currently made public, which is certainly not good practice, I'll need to import that separately somehow
+* Plot's x-axis is currently just the index of the sample. Would be better to use mileage, or longitude.
+    * Longitude likely easier, can draw out of Elevation JSON
 
 ## Footnotes
 
