@@ -5,13 +5,13 @@
 
 I recently moved from Austin, TX to Boston, MA. It was a four-day drive!
 
-At one point, I found myself on Interstate 80 (I think...), somewhere in eastern Pennsylvania (actually I don't remember exactly, the whole long trip is a blur).
+At one point, I found myself on Interstate 80, somewhere in eastern Pennsylvania (actually I don't remember exactly, the whole long trip is a blur).
 
 As the highway crested over a mountain pass in the Appalachians, I was struck by the text on a highway sign.
 
 ![I80Sign](https://upload.wikimedia.org/wikipedia/commons/3/3e/I80_Highest_Point.jpg)
 
-Apparently, I had just crested the highest point on this highway's Eastern section. The next time the highway would reach a similar elevation would be somewhere in Wyoming. I don't actually remember the exact details (I just found this example image on Wikipedia), but I do remember being momentarily awed by the large scales of these highways, that few people get to fully experience.
+Apparently, I had just crested the highest point on this highway's Eastern section. The next time the highway would reach a similar elevation would be somewhere in Wyoming. I don't remember the exact details (I just found this example image on Wikipedia), but I do remember being momentarily awed, by the long scales of these highways, and the perspectives that are needed to sense those scales.
 
 And for some reason, it reminded me of the album cover for '*Unknown Pleasures*', by Joy Division.
 
@@ -19,11 +19,11 @@ And for some reason, it reminded me of the album cover for '*Unknown Pleasures*'
 
 It's an incredibly famous album cover, with [fascinating origins](https://blogs.scientificamerican.com/sa-visual/pop-culture-pulsar-origin-story-of-joy-division-s-unknown-pleasures-album-cover-video/).
 
-(I don't actually like Joy Division's music all that much, but the *Unknown Pleasures* cover is just so great)
+I thought: wouldn't it be cool to plot the elevations of interstate highways, and then stack them on top of each other, à la *Unknown Pleasures*? Such an image would present a cross-sectional slice of America, as experienced by drivers on interstate highways, but on a scale greater than what we might usually sense.
 
-I thought: wouldn't it be cool to plot the elevations of interstate highways, and then stack them on top of each other, à la *Unknown Pleasures*?
+Another source of inspiration is John McPhee's classic book [*Annals of the Former World*](https://en.wikipedia.org/wiki/Annals_of_the_Former_World), which describes American geology across I-80. It's one of my favorite books. His choice of I-80 is somewhat arbitrary, and so this project could also be a simple glimpse into what other highways might present geologically.
 
-And so this side project was born!
+And so this project was born!
 
 ## Workflow
 
@@ -38,10 +38,12 @@ And so this side project was born!
 
 ## Current progress
 
-* I-40 has been completed!
+* I-40 has been completed! The plot is below.
     * Lots of manual work involved though
         * Routing done manually (though see Todo below)
         * Route polyline copy/pasted, rather than parsed out
+
+![I-40 Plot](I40plot.png)
 
 ## Todo
 
