@@ -10,6 +10,8 @@ import json
 #import simplejson
 #import seaborn as sns
 import matplotlib.pyplot as plt
+import pandas as pd
+from ggplot import *
 
 #sns.set(style = '')
 
@@ -21,6 +23,7 @@ gmaps = googlemaps.Client(key=mykey)
 # print(geocode_result)
 
 elevlist=[]
+dfelev=[]
 
 def WhereTo(highway):
     '''I-40 polyline setup'''
@@ -59,22 +62,31 @@ def Elevations(poly40):
     with open('I40_elev.json', 'w') as fp:
         json.dump(I40_elev, fp)
 
-    elevlist = []
+    elevlist = {}
     for spt in I40_elev:
-        elevlist.append(spt['elevation'])
+        #elevlist.append(spt['elevation'])
+        elevlist[spt['location']['lng']] = spt['elevation']
 
-    return elevlist
+    #dfelev = pd.DataFrame(elevlist, columns=['longitude', 'elevation'])
+    dfelev = pd.DataFrame.from_dict(elevlist, orient='index')
+    dfelev.columns = ['elevation']
+    dfelev.index.names = ['longitude']
+    dfelev.reset_index(inplace=True)
+    dfelev['longitude'] = abs(dfelev['longitude'])
 
-def Plotting(elevlist):
-    # Think about plotting down the road
-    plotter = plt.scatter(x = range(len(elevlist)), y = elevlist)
+    return dfelev
+
+def Plotting(dfelev):
+    plotter = plt.scatter(x = dfelev['longitude'], y = dfelev['elevation'])
     plt.savefig('I40plot.png')
+    #p = ggplot(dfelev, aes('longitude', 'elevation')) + geom_line() + xlab('Longitude') + ylab('Elevation') + ggtitle('Interstate 40')
+    #ggsave(p, filename = 'I40plot.png')
 
 def main():
     highway = 'I40'
     waypts = WhereTo(highway)
     poly40 = Routing(waypts)
-    elevlist = Elevations(poly40)
-    Plotting(elevlist)
+    dfelev = Elevations(poly40)
+    Plotting(dfelev)
 
 main()

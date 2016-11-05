@@ -19,6 +19,8 @@ And for some reason, it reminded me of the album cover for '*Unknown Pleasures*'
 
 It's an incredibly famous album cover, with [fascinating origins](https://blogs.scientificamerican.com/sa-visual/pop-culture-pulsar-origin-story-of-joy-division-s-unknown-pleasures-album-cover-video/).
 
+![Pulsars](https://blogs.scientificamerican.com/blogs/assets/sa-visual/Image/pulsar_trio.jpg)
+
 I thought: wouldn't it be cool to plot the elevations of interstate highways, and then stack them on top of each other, à la *Unknown Pleasures*? Such an image would present a cross-sectional slice of America, as experienced by drivers on interstate highways, but on a scale greater than what we might usually sense.
 
 Another source of inspiration is John McPhee's classic book [*Annals of the Former World*](https://en.wikipedia.org/wiki/Annals_of_the_Former_World), which describes American geology across I-80. It's one of my favorite books. His choice of I-80 is somewhat arbitrary, and so this project could also be a simple glimpse into what other highways might present geologically.
