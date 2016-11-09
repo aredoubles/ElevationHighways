@@ -43,7 +43,6 @@ And so this project was born!
 * I-40 has been completed! The plot is below.
     * Lots of manual work involved though
         * Routing done manually (though see Todo below)
-        * Route polyline copy/pasted, rather than parsed out
 
 ![I-40 Plot](I40plot.png)
 
@@ -53,8 +52,6 @@ And so this project was born!
     * Way more precise than my manual routing!
     * But since the Google Elevations API still requires coordinates or polylines, is there a simple way to convert KML? Preferably in Python.
 * Add more highways, of course
-* Make the plot more attractive, add labels, etc.
-* Successfully parsed out the polyline from the route, but double backslashes need to be replaced with singles
 * My Google Maps API key is currently made public, which is certainly not good practice, I'll need to import that separately somehow
 
 ## Footnotes

@@ -42,20 +42,20 @@ def WhereTo(highway):
 def Routing(waypts):
     I40_path = gmaps.directions(waypts[0], waypts[1],
                                 waypoints=[waypts[2]])
-    # Output as JSON
+    # Output is in JSON format
 
     # Save this JSON output to file
     # with open('I40_path.json', 'w') as fp: json.dump(I40_path, fp)
 
     # Haven't figured out a way to parse out the polyline for this route, so just paste in manually for now
-    poly40 = R"""sydpEtsgzMtlFjfSwmOfadAsvBftzAohLt_XmwQp{MwsLxvEa}B|oLpgAtgGfqGdsRveNrfTtxd@n`hA`zJfl\dtAlav@eeDlvzApcKt_Sh|Npbh@tyE~w\sfRj{Vmqk@xovAwfU~`]_dSlcMuqw@buQmia@v|I{c_@r`ZozEjeOg|A~{PqgYl_[_z]txTbtA~qb@gDrvVkhNdzPa}FyqBshEpnHu_GkuAuzCxiH{nGhaKqfAzcEylLdgC_eK|zAmvCrkIwfOr{R`nJbtg@yu@rbi@brBtcY`qDbiJtdNjeeAz]|vWu_Fz~Vbx@rhh@iiDt`Wsb]txx@qmI`aSua@daTeAd|a@b~HpvVaoMzn`@{wDvq`AboCvvv@|vD|eZke@xjPiyCfnJdeHnbSlzHlrKweApgNlqJnnXljGva}@`tMhhVfoDxqk@|}@jvb@lfMvr`Avbb@`{zB~pIf{_@h}LhjSdcYzjk@tkYfwm@ptL~s[qiFxgI~eBvaOdoCzfCujA`ca@taEdtu@vsQ`}q@l|Wn{rAlxNjxz@`vC|~gAxmBpopAclTzaV}~e@fcDcdLruf@_iJpnf@{fD|nd@sfMr~]mlBjuV_mGrxH{oL|sSieHx~b@opCffk@g}@jlP`oE~de@hdFjet@lhLro[gqItti@mfGnic@nj@r_YfnCrqbBjdDd|}@laAhvcAxqFhseAyBzo_By~M`ucA_Yzdi@q`Fjrl@koD`rwAlk@jqpApmLf|_AxqEnnh@fuG`v^v}Tx`Ux{ExicAlA~l}AtlFr|_AnJlsj@}~Bd`n@oqAxns@hnDj|\kH~joAgqM|dxBraSpvlA~pI|{h@}|IvzXbmAfsx@ztF~gS|mCbve@z}NnkrAphLpq`@auCbvTyhFnftCDlolAcrGjfh@kwJ~}\x`HrpYouGbr`@~uB|~WvvSjeqAgxAbhZghGdkKds@vsQanGnwNdh@x|c@{{M~rVgsRptSupOpdGytJ|q_@emYbapAse@v__@xsKrrd@fqS`tT|`Nb|a@tvO|la@hr[f}kAt`Qvr{@n}EfzDaR|rWelQxvoAszQjmnAavKxet@a~BbfU|\v`[|Nv~VijItwTi`Anan@pdFvzj@kgBfiaA}zKlfd@l|@rec@xfLp_g@zuEfu_@`lEr{\ojJhs{A|dHn{GrgWbkIdni@~eBrsLb~Kl}Dbu[xi@xra@ssTphLewH~vKlWfxPx_CjkVl_JlluAvdNv}|@us@dii@zDboqAksJrle@{_Ihg`A}rGtnf@"""
+    #poly40 = R"""sydpEtsgzMtlFjfSwmOfadAsvBftzAohLt_XmwQp{MwsLxvEa}B|oLpgAtgGfqGdsRveNrfTtxd@n`hA`zJfl\dtAlav@eeDlvzApcKt_Sh|Npbh@tyE~w\sfRj{Vmqk@xovAwfU~`]_dSlcMuqw@buQmia@v|I{c_@r`ZozEjeOg|A~{PqgYl_[_z]txTbtA~qb@gDrvVkhNdzPa}FyqBshEpnHu_GkuAuzCxiH{nGhaKqfAzcEylLdgC_eK|zAmvCrkIwfOr{R`nJbtg@yu@rbi@brBtcY`qDbiJtdNjeeAz]|vWu_Fz~Vbx@rhh@iiDt`Wsb]txx@qmI`aSua@daTeAd|a@b~HpvVaoMzn`@{wDvq`AboCvvv@|vD|eZke@xjPiyCfnJdeHnbSlzHlrKweApgNlqJnnXljGva}@`tMhhVfoDxqk@|}@jvb@lfMvr`Avbb@`{zB~pIf{_@h}LhjSdcYzjk@tkYfwm@ptL~s[qiFxgI~eBvaOdoCzfCujA`ca@taEdtu@vsQ`}q@l|Wn{rAlxNjxz@`vC|~gAxmBpopAclTzaV}~e@fcDcdLruf@_iJpnf@{fD|nd@sfMr~]mlBjuV_mGrxH{oL|sSieHx~b@opCffk@g}@jlP`oE~de@hdFjet@lhLro[gqItti@mfGnic@nj@r_YfnCrqbBjdDd|}@laAhvcAxqFhseAyBzo_By~M`ucA_Yzdi@q`Fjrl@koD`rwAlk@jqpApmLf|_AxqEnnh@fuG`v^v}Tx`Ux{ExicAlA~l}AtlFr|_AnJlsj@}~Bd`n@oqAxns@hnDj|\kH~joAgqM|dxBraSpvlA~pI|{h@}|IvzXbmAfsx@ztF~gS|mCbve@z}NnkrAphLpq`@auCbvTyhFnftCDlolAcrGjfh@kwJ~}\x`HrpYouGbr`@~uB|~WvvSjeqAgxAbhZghGdkKds@vsQanGnwNdh@x|c@{{M~rVgsRptSupOpdGytJ|q_@emYbapAse@v__@xsKrrd@fqS`tT|`Nb|a@tvO|la@hr[f}kAt`Qvr{@n}EfzDaR|rWelQxvoAszQjmnAavKxet@a~BbfU|\v`[|Nv~VijItwTi`Anan@pdFvzj@kgBfiaA}zKlfd@l|@rec@xfLp_g@zuEfu_@`lEr{\ojJhs{A|dHn{GrgWbkIdni@~eBrsLb~Kl}Dbu[xi@xra@ssTphLewH~vKlWfxPx_CjkVl_JlluAvdNv}|@us@dii@zDboqAksJrle@{_Ihg`A}rGtnf@"""
 
-    '''The following successfuly parses out the polyline. But double backslashes need to be replaced with singles. How?'''
-    '''
     for rec in I40_path:
-        poly40 = str(rec['overview_polyline']['points'])
-    poly40.decode('unicode_escape')
-    '''
+        poly40 = rec['overview_polyline']['points']
+    #poly40.decode('unicode_escape')
+
+    poly40 = poly40.encode('utf8')
+
     return poly40
 
 # Plug this polyline into the Elevations API
