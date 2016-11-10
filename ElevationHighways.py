@@ -12,7 +12,9 @@ import json
 import matplotlib.pyplot as plt
 import pandas as pd
 from ggplot import *
-import re
+from pykml import parser
+import urllib2
+import xmltodict
 
 #sns.set(style = '')
 
@@ -26,34 +28,32 @@ gmaps = googlemaps.Client(key=mykey)
 elevlist=[]
 dfelev=[]
 
-def WhereTo(highway):
-    '''I-40 polyline setup'''
-    # Get directions from Wilmington NC to Barstow CA
-    # Wilmington: 34.272427,-77.868283
-    I40_start = '34.272427,-77.868283'
-    # Barstow: 34.886330, -117.011548
-    I40_end = '34.886330,-117.011548'
-    # Requires a waypoint in western NC to stay on I-40 entirely
-    I40_way1 = '35.619243,-83.009142'
-    waypts = [I40_start, I40_end, I40_way1]
-    return waypts
+def Routing(highway):
+    # Wikipedia hosts a KML file for each major highway. Here is the URL I-40's:
+    url = 'https://en.wikipedia.org/w/index.php?title=Template%3AAttached_KML%2FInterstate_40&action=raw'
+    fileobject = urllib2.urlopen(url)
+    # Parse this KML/XML, so that it can be treated like a JSON
+    doc = xmltodict.parse(fileobject)
 
-
-def Routing(waypts):
-    I40_path = gmaps.directions(waypts[0], waypts[1],
-                                waypoints=[waypts[2]])
-    # Output is in JSON format
-
-    # Save this JSON output to file
+    rawcoords = doc['kml']['Document']['Placemark']['LineString']['coordinates']
+    # Coordinates are basically a single enormous string. Need to split by spaces (waypoints), and commas (lat/lon)
+    listcoords = rawcoords.split(' ')
+    newcoords = []
+    for pair in listcoords:
+        pair = pair.split(',')
+        pair = [float(pair[1]), float(pair[0])]     # Flip lat/lon presentation
+        newcoords.extend(pair)
+    coords = zip(newcoords[::2],newcoords[1::2])    # Pairs of records are zipped together to form tuples
+    # len(coords) -> 7645 coordinates, might be too much for the API to handle at once? Getting an HTTP error: 413
+    # Error message says max waypoints: 23.   7625/23 = 332.391304348
+    # Get directions, based on the KML's waypoints (no other way to get polyline)
+    I40_path = gmaps.directions(coords[0], coords[-1],
+                                waypoints=coords[::350])
     # with open('I40_path.json', 'w') as fp: json.dump(I40_path, fp)
-
-    # Haven't figured out a way to parse out the polyline for this route, so just paste in manually for now
-    #poly40 = R"""sydpEtsgzMtlFjfSwmOfadAsvBftzAohLt_XmwQp{MwsLxvEa}B|oLpgAtgGfqGdsRveNrfTtxd@n`hA`zJfl\dtAlav@eeDlvzApcKt_Sh|Npbh@tyE~w\sfRj{Vmqk@xovAwfU~`]_dSlcMuqw@buQmia@v|I{c_@r`ZozEjeOg|A~{PqgYl_[_z]txTbtA~qb@gDrvVkhNdzPa}FyqBshEpnHu_GkuAuzCxiH{nGhaKqfAzcEylLdgC_eK|zAmvCrkIwfOr{R`nJbtg@yu@rbi@brBtcY`qDbiJtdNjeeAz]|vWu_Fz~Vbx@rhh@iiDt`Wsb]txx@qmI`aSua@daTeAd|a@b~HpvVaoMzn`@{wDvq`AboCvvv@|vD|eZke@xjPiyCfnJdeHnbSlzHlrKweApgNlqJnnXljGva}@`tMhhVfoDxqk@|}@jvb@lfMvr`Avbb@`{zB~pIf{_@h}LhjSdcYzjk@tkYfwm@ptL~s[qiFxgI~eBvaOdoCzfCujA`ca@taEdtu@vsQ`}q@l|Wn{rAlxNjxz@`vC|~gAxmBpopAclTzaV}~e@fcDcdLruf@_iJpnf@{fD|nd@sfMr~]mlBjuV_mGrxH{oL|sSieHx~b@opCffk@g}@jlP`oE~de@hdFjet@lhLro[gqItti@mfGnic@nj@r_YfnCrqbBjdDd|}@laAhvcAxqFhseAyBzo_By~M`ucA_Yzdi@q`Fjrl@koD`rwAlk@jqpApmLf|_AxqEnnh@fuG`v^v}Tx`Ux{ExicAlA~l}AtlFr|_AnJlsj@}~Bd`n@oqAxns@hnDj|\kH~joAgqM|dxBraSpvlA~pI|{h@}|IvzXbmAfsx@ztF~gS|mCbve@z}NnkrAphLpq`@auCbvTyhFnftCDlolAcrGjfh@kwJ~}\x`HrpYouGbr`@~uB|~WvvSjeqAgxAbhZghGdkKds@vsQanGnwNdh@x|c@{{M~rVgsRptSupOpdGytJ|q_@emYbapAse@v__@xsKrrd@fqS`tT|`Nb|a@tvO|la@hr[f}kAt`Qvr{@n}EfzDaR|rWelQxvoAszQjmnAavKxet@a~BbfU|\v`[|Nv~VijItwTi`Anan@pdFvzj@kgBfiaA}zKlfd@l|@rec@xfLp_g@zuEfu_@`lEr{\ojJhs{A|dHn{GrgWbkIdni@~eBrsLb~Kl}Dbu[xi@xra@ssTphLewH~vKlWfxPx_CjkVl_JlluAvdNv}|@us@dii@zDboqAksJrle@{_Ihg`A}rGtnf@"""
-
+    # Parse out the polyline from the directions
     for rec in I40_path:
         poly40 = rec['overview_polyline']['points']
-    #poly40.decode('unicode_escape')
-
+    # Encode as unicode, to avoid issues with backslashes in the polyline
     poly40 = poly40.encode('utf8')
 
     return poly40
@@ -67,17 +67,16 @@ def Elevations(poly40):
 
     # with open('I40_elev.json', 'w') as fp: json.dump(I40_elev, fp)
 
+    # Create a dictionary. Key = longitude. Value = elevation.
     elevlist = {}
     for spt in I40_elev:
-        #elevlist.append(spt['elevation'])
         elevlist[spt['location']['lng']] = spt['elevation']
 
-    #dfelev = pd.DataFrame(elevlist, columns=['longitude', 'elevation'])
+    # Convert dictionary into a dataframe
     dfelev = pd.DataFrame.from_dict(elevlist, orient='index')
     dfelev.columns = ['elevation']
     dfelev.index.names = ['longitude']
     dfelev.reset_index(inplace=True)
-    #dfelev['longitude'] = abs(dfelev['longitude'])
 
     return dfelev
 
@@ -89,8 +88,7 @@ def Plotting(dfelev):
 
 def main():
     highway = 'I40'
-    waypts = WhereTo(highway)
-    poly40 = Routing(waypts)
+    poly40 = Routing(highway)
     dfelev = Elevations(poly40)
     Plotting(dfelev)
 
