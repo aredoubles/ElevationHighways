@@ -21,7 +21,7 @@ It's an incredibly famous album cover, with [fascinating origins](https://blogs.
 
 I thought: wouldn't it be cool to plot the elevations of interstate highways, and then stack them on top of each other, à la *Unknown Pleasures*? Such an image would present a cross-sectional slice of the whole of America, as experienced by drivers on interstate highways, but on a scale greater than what we might usually sense.
 
-Another source of inspiration is John McPhee's classic book [*Annals of the Former World*](https://en.wikipedia.org/wiki/Annals_of_the_Former_World). The book uses geological features along the length I-80 to explore the history of geological science, the pains and pleasures of academia, and how the immensity of geological time scales dwarf the human lifespans that we're used to considering in each day. It's one of my favorite books. His choice of I-80 is somewhat arbitrary, and so this project could also be a simple glimpse into what other highways might present geologically.
+Another source of inspiration is John McPhee's classic book [*Annals of the Former World*](https://en.wikipedia.org/wiki/Annals_of_the_Former_World). The book uses geological features along the length of I-80 to explore the history of geological science, the pains and pleasures of academia, and how the immensity of geological time scales dwarf the human lifespans that we're used to considering in each day. It's one of my favorite books. His choice of I-80 is somewhat arbitrary, and so this project could also be a simple glimpse into what other highways might present geologically.
 
 And so this project was born!
 
@@ -38,8 +38,8 @@ And so this project was born!
 
 ## Current progress
 
-* I-40 has been completed! The plot is below.
-    * Gets route KML from wikipedia
+* I-30, I-40, and I-80 have been completed! The plot for I-40 is below.
+    * Gets route KML from Wikipedia
     * Uses KML to get Google Maps directions, and the included polyline
     * Uses polyline to get elevations along route, which are then plotted
 
@@ -47,7 +47,9 @@ And so this project was born!
 
 ## Todo
 
+* Plot the highways on top of each other, à la *Unknown Pleasures*
 * Add more highways, of course
+    * Unfortunately, the format of the KML files on Wikipedia are not consistent! There may also be one or two highways without KMLs. How to deal with these inconsistencies?
 * My Google Maps API key is currently made public, which is certainly not good practice, I'll need to import that separately somehow
 
 ## Footnotes
