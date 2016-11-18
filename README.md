@@ -38,7 +38,7 @@ And so this project was born!
 
 ## Current progress
 
-* I-10, I-20, I-40, I-70, and I-80 have been completed! The plot for them is below.
+* Added most of the major interstate highways! The plot for them is below.
 * `ElevationHighways.py`
     * Gets route KML from Wikipedia
     * Uses KML to get Google Maps directions, and the included polyline
@@ -52,9 +52,11 @@ And so this project was born!
 
 ## Todo
 
-* Add more highways, of course
-    * Unfortunately, the format of the KML files on Wikipedia are not consistent! There may also be one or two highways without KMLs.
-        * I'm trying to address these inconsistencies with major conditional statements, and several more will need to be added.
+* Not sure how robust the `ElevationHighways.py` script really is, will test further
+* Plot is somewhat hard to read, since lines are all on top of each other
+    * Should incorporate latitude (or average latitude) somehow
+        * Could be a 3-D plot
+        * Or just offset, like in the *Unknown Pleasures* art, with y-axis removed
 * My Google Maps API key is currently made public, which is certainly not good practice, I'll need to import that separately somehow
 
 ## Footnotes
