@@ -38,7 +38,7 @@ And so this project was born!
 
 ## Current progress
 
-* I-10, I-40, and I-80 have been completed! The plot for them is below.
+* I-10, I-20, I-40, and I-80 have been completed! The plot for them is below.
 * `ElevationHighways.py`
     * Gets route KML from Wikipedia
     * Uses KML to get Google Maps directions, and the included polyline
