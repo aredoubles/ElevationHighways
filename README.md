@@ -38,25 +38,27 @@ And so this project was born!
 
 ## Current progress
 
-* I-30, I-40, and I-80 have been completed! The plot for them is below.
+* I-10, I-40, and I-80 have been completed! The plot for them is below.
 * `ElevationHighways.py`
     * Gets route KML from Wikipedia
     * Uses KML to get Google Maps directions, and the included polyline
     * Uses polyline to get elevations along route, saved as CSVs
+    * Plot for individual highways created
 * `Plotter.py`
     * CSVs combined into a master dataframe
-    * Plot created and saved
+    * Master plot created and saved
 
 ![Interstate Highways Plot](allplot.png)
 
 ## Todo
 
 * Add more highways, of course
-    * Unfortunately, the format of the KML files on Wikipedia are not consistent! There may also be one or two highways without KMLs. How to deal with these inconsistencies.
+    * Unfortunately, the format of the KML files on Wikipedia are not consistent! There may also be one or two highways without KMLs.
+        * I'm trying to address these inconsistencies with major conditional statements, and several more will need to be added.
 * My Google Maps API key is currently made public, which is certainly not good practice, I'll need to import that separately somehow
 
 ## Footnotes
 
 * Roger Shaw
 * Currently a fellow at Insight Health Data Science, transitioning from academia into a career in data science
-* This is just a side project, for playing around with Google Maps APIs, geoegraphic data, nested JSONs, plotting, etc.
+* This is just a side project, for playing around with Google Maps APIs, geographic data, nested JSONs, plotting, etc.

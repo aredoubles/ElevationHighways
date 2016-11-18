@@ -14,15 +14,6 @@ for fname in glob.glob(path):
     else: bigdf = pd.concat([bigdf, tempdf])
 bigdf.reset_index(inplace=True)
 
-inclhwys = list(set(bigdf['hwy']))
-
-'''
-To split dataframe:
-df1 = df[df['Sales'] >= s]
-'''
-i30 = bigdf[bigdf['hwy'] == inclhwys[0]]
-i40 = bigdf[bigdf['hwy'] == inclhwys[1]]
-
 p = ggplot(bigdf, aes('longitude', 'elevation', 'hwy')) + geom_line() + xlab('Longitude') + ylab('Elevation') + \
     ggtitle('Interstate Highways') + theme_bw()
 

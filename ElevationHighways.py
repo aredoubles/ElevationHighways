@@ -23,16 +23,26 @@ def Routing(highway):
     fileobject = urllib2.urlopen(url)
     # Parse this KML/XML, so that it can be treated like a JSON
     doc = xmltodict.parse(fileobject)
-
-    rawcoords = doc['kml']['Document']['Placemark']['LineString']['coordinates']
     # Coordinates are basically a single enormous string. Need to split by spaces (waypoints), and commas (lat/lon)
-    listcoords = rawcoords.split(' ')
-    newcoords = []
-    for pair in listcoords:
-        pair = pair.split(',')
-        pair = [float(pair[1]), float(pair[0])]     # Flip lat/lon presentation
-        newcoords.extend(pair)
-    coords = zip(newcoords[::2],newcoords[1::2])    # Pairs of records are zipped together to form tuples
+    for chunk in doc['kml']['Document']['Placemark']:
+        if chunk['name'].startswith('Interstate'):
+            rawcoords = chunk['LineString']['coordinates']
+            listcoords = rawcoords.split(' ')
+            newcoords = []
+            for pair in listcoords:
+                pair = pair.split(',')
+                pair = [float(pair[1]), float(pair[0])]     # Flip lat/lon presentation
+                newcoords.extend(pair)
+            coords = zip(newcoords[::2],newcoords[1::2])    # Pairs of records are zipped together to form tuples
+        if chunk['name'].startswith('Driving'):
+            rawcoords = chunk['LineString']['coordinates']
+            listcoords = rawcoords.split('        ')
+            newcoords = []
+            for pair in listcoords:
+                pair = pair.split(',')
+                pair = [float(pair[1]), float(pair[0])]     # Flip lat/lon presentation
+                newcoords.extend(pair)
+            coords = zip(newcoords[::2],newcoords[1::2])    # Pairs of records are zipped together to form tuples
     # len(coords) -> 7645 coordinates, might be too much for the API to handle at once? Getting an HTTP error: 413
     # Error message says max waypoints: 23.   7625/23 = 332.391304348
     waynm = int(len(coords) / 20)
@@ -86,7 +96,7 @@ def Plotting(dfelev, highway):
     ggplot.save(p, filename = nmplot)
 
 def main():
-    highway = input('''Highway (ex: 'I40'): ''')
+    highway = raw_input('''Highway (ex: I40): ''')
     poly40 = Routing(highway)
     dfelev = Elevations(poly40, highway)
     Plotting(dfelev, highway)
