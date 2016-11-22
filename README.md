@@ -48,7 +48,7 @@ And so this project was born!
 * Plot is somewhat hard to read, since lines are all on top of each other
     * Should incorporate latitude (or average latitude) somehow
         * Could be a 3-D plot
-        * Or just offset, like in the *Unknown Pleasures* art, with y-axis removed
+        * Or just offset, with y-axis removed
     * An interactive plot would be cool, to see the exact elevation and location of different points
     * Maybe overlay on top of a US map somehow? That'd be cool!
 * My Google Maps API key is currently made public, which is certainly not good practice, I'll need to import that separately somehow
