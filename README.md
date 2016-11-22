@@ -11,17 +11,9 @@ At one point, as the highway crested over a mountain pass in the Appalachians, I
 
 Seeing this sign, I felt momentarily awed, by the long scales of these highways, and the perspectives that are needed to sense those scales.
 
-Thinking on it further, it reminded me of the album cover of *Unknown Pleasures*, by Joy Division.
+I thought: wouldn't it be cool to plot the elevations of interstate highways, and then stack them on top of each other? Such an image would present a cross-sectional slice of the whole of America, as experienced by drivers on interstate highways, but on a scale greater than what we might usually sense.
 
-![UnknownPleasures](https://upload.wikimedia.org/wikipedia/en/7/70/Unknown_Pleasures_Joy_Division_LP_sleeve.jpg)
-
-It's an incredibly famous album cover, with [fascinating origins](https://blogs.scientificamerican.com/sa-visual/pop-culture-pulsar-origin-story-of-joy-division-s-unknown-pleasures-album-cover-video/).
-
-![Pulsars](https://blogs.scientificamerican.com/blogs/assets/sa-visual/Image/pulsar_trio.jpg)
-
-I thought: wouldn't it be cool to plot the elevations of interstate highways, and then stack them on top of each other, à la *Unknown Pleasures*? Such an image would present a cross-sectional slice of the whole of America, as experienced by drivers on interstate highways, but on a scale greater than what we might usually sense.
-
-Another source of inspiration is John McPhee's classic book [*Annals of the Former World*](https://en.wikipedia.org/wiki/Annals_of_the_Former_World). The book uses geological features along the length of I-80 to explore the history of geological science, the pains and pleasures of academia, and how the immensity of geological time scales dwarf the human lifespans that we're used to considering in each day. It's one of my favorite books. His choice of I-80 is somewhat arbitrary, and so this project could also be a simple glimpse into what other highways might present geologically.
+Another source of inspiration is John McPhee's classic book [*Annals of the Former World*](https://en.wikipedia.org/wiki/Annals_of_the_Former_World). The book uses geological features along the length of I-80 to explore the history of geological science, and also how the immensity of geological time scales dwarf the human lifespans that we're used to considering in each day. It's one of my favorite books. His choice of I-80 is somewhat arbitrary, and so this project could also be a simple glimpse into what other highways might present geologically.
 
 And so this project was born!
 
