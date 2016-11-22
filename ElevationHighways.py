@@ -1,12 +1,6 @@
 # Charting elevations of every major US Highway
 # Using Google Maps APIs
 
-'''
-TODO:
-I-90
-I-64?
-'''
-
 import googlemaps
 import json
 import matplotlib.pyplot as plt
@@ -38,36 +32,7 @@ def Routing(highway):
         pair = [float(pair[1]), float(pair[0])]     # Flip lat/lon presentation
         newcoords.extend(pair)
     coords = zip(newcoords[::2],newcoords[1::2])    # Pairs of records are zipped together to form tuples
-    '''
-    for chunk in doc['kml']['Document']['Placemark']:
-        if doc['kml']['Document']['Placemark'].startswith('Driving'):
-            rawcoords = doc['kml']['Document']['Placemark']['LineString']['coordinates']
-            listcoords = rawcoords.split(' ')
-            newcoords = []
-            for pair in listcoords:
-                pair = pair.split(',')
-                pair = [float(pair[1]), float(pair[0])]     # Flip lat/lon presentation
-                newcoords.extend(pair)
-            coords = zip(newcoords[::2],newcoords[1::2])    # Pairs of records are zipped together to form tuples
-        elif chunk['name'].startswith('Interstate'):
-            rawcoords = chunk['LineString']['coordinates']
-            listcoords = rawcoords.split(' ')
-            newcoords = []
-            for pair in listcoords:
-                pair = pair.split(',')
-                pair = [float(pair[1]), float(pair[0])]     # Flip lat/lon presentation
-                newcoords.extend(pair)
-            coords = zip(newcoords[::2],newcoords[1::2])    # Pairs of records are zipped together to form tuples
-        elif chunk['name'].startswith('Driving'):
-            rawcoords = chunk['LineString']['coordinates']
-            listcoords = rawcoords.split('        ')
-            newcoords = []
-            for pair in listcoords:
-                pair = pair.split(',')
-                pair = [float(pair[1]), float(pair[0])]     # Flip lat/lon presentation
-                newcoords.extend(pair)
-            coords = zip(newcoords[::2],newcoords[1::2])    # Pairs of records are zipped together to form tuples
-    '''
+
     # len(coords) -> 7645 coordinates, might be too much for the API to handle at once? Getting an HTTP error: 413
     # Error message says max waypoints: 23.   7625/23 = 332.391304348
     waynm = int(len(coords) / 20)
